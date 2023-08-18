@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" media="screen" />
+    <link rel="stylesheet" href="style.css" media="screen" />
+    <script src="script.js"></script>
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>Sketchpad</h1>
+    <div class="container">
+      <div class="board"></div>
+      <div class="buttons">
+        <button class="black" type="button">Black</button>
+        <button class="choose-color" type="button">Choose color</button>
+        <button class="Erase" type="button">Erase</button>
+        <button class="reset" type="button">Reset</button>
+      </div>
+      <div class="choose-num-of-squares">
+        <input type="number" min="2" max="100" placeholder="16">
+        <button class="choose-grid">Select grid layout</button>
+      </div>
+    </div>
+  </body>
 </html>
