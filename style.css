@@ -10,6 +10,8 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -21,4 +23,17 @@ body {
   display: flex;
   flex-wrap: wrap;
   border: solid 1px black;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.choose-nb-squares {
+  margin-top: 20px;
+}
+
+.reset {
+  margin-bottom: 20px;
 }

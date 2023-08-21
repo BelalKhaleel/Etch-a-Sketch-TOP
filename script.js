@@ -32,6 +32,29 @@ function colorSquares(event) {
   }
 }
 
+function generateNewGrid() {
+    let gridSquares = +prompt('Please enter number of squares per side for the new grid' , '16');
+    if (gridSquares < 16 || gridSquares > 100) {
+      alert('Number of squares per side must be between 16 and 100!');
+    }
+    let divs = document.querySelectorAll('.content');
+    divs.forEach(div => {
+      div.remove();
+    });
+    generateSquares(gridSquares);
+}
+
+const btn = document.querySelector('.choose-nb-squares');
+btn.addEventListener('click', generateNewGrid);
+
+const resetbtn = document.querySelector('.reset');
+resetbtn.addEventListener('click', () => {
+  let divs = document.querySelectorAll('.content');
+  divs.forEach(div => {
+    div.style.background = 'white';
+  });
+})
+
 document.addEventListener('mousedown', startColoring);
 document.addEventListener('mouseup', stopColoring);
 document.addEventListener('mousemove', colorSquares);
