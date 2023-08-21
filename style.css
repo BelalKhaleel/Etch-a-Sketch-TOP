@@ -20,5 +20,5 @@ body {
   height: 600px;
   display: flex;
   flex-wrap: wrap;
-  /* align-items: stretch; */
+  border: solid 1px black;
 }
