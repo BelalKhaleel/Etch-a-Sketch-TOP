@@ -5,10 +5,8 @@
 }
 
 body {
-  margin: 0;
+  margin: 20px 0;
   font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -18,8 +16,8 @@ body {
 
 
 .container {
-  width: 600px;
-  height: 600px;
+  width: 550px;
+  height: 550px;
   display: flex;
   flex-wrap: wrap;
   border: solid 1px black;
@@ -30,10 +28,7 @@ button {
   padding: 5px;
 }
 
-.choose-nb-squares {
-  margin-top: 20px;
-}
-
-.reset {
-  margin-bottom: 20px;
+.buttons {
+  display: flex;
+  gap: 10px;
 }

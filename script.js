@@ -26,11 +26,55 @@ function stopColoring() {
   isMouseDown = false;
 }
 
+let color = 'black';
+
 function colorSquares(event) {
   if (isMouseDown && event.target.classList.contains('content')) {
-    event.target.style.background = 'black';
+    event.target.style.background = color;
   }
 }
+
+const colorBlack = document.querySelector('.black');
+colorBlack.addEventListener('click', () => {
+  color = 'black';
+})
+
+const randomColor = document.querySelector('.random-color');
+randomColor.addEventListener('click', () => {
+  color = `hsla(${Math.random() * 360}, 100%, 50%, 1)`;
+})
+
+const erase = document.querySelector('.erase');
+erase.addEventListener('click', () => {
+  color = 'white';
+})
+
+const colors = document.querySelector('.colorful');
+colors.addEventListener('click', () => {
+  let divs = document.querySelectorAll('.content');
+  // Function for the colorful behavior
+  function colorfulBehavior() {
+    if (isMouseDown) {
+      color = `hsla(${Math.random() * 360}, 100%, 50%, 1)`;
+      this.style.background = color;
+    }
+  }
+
+  // Add mouseover event listeners to each div
+  document.addEventListener('mousedown', () => {
+    divs.forEach(div => {
+      div.addEventListener('mouseover', colorfulBehavior);
+  });
+  });
+
+  // Remove mouseover event listeners when mouse button is released
+  document.addEventListener('mouseup', () => {
+    divs.forEach(div => {
+      div.removeEventListener('mouseover', colorfulBehavior);
+    });
+  });
+});
+
 
 function generateNewGrid() {
     let gridSquares = +prompt('Please enter number of squares per side for the new grid' , '16');
