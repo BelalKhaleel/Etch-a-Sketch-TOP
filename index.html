@@ -6,18 +6,25 @@
     <link rel="stylesheet" href="reset.css" media="screen" />
     <link rel="stylesheet" href="style.css" media="screen" />
     <script src="script.js" defer></script>
-    <title>Sketchpad</title>
+    <title>Etch a Sketch</title>
   </head>
   <body>
-    <button class="choose-nb-squares" type="button">Choose the number of squares per side for the grid</button>
-    <div class="container">
-    </div>
-    <div class="buttons">
-      <button class="black" type="button" value="black">Black</button>
-      <button class="random-color" type="button" >Random Color</button>
-      <button class="colorful" type="button" >Rainbow</button>
-      <button class="erase" type="button" >Eraser</button>
-      <button class="reset" type="button">Reset</button>
+    <div class="wrapper">
+      <div>
+        <label for="nb-of-cells">Please choose number of cells per side of the board:</label>
+        <input type="number" id="nb-of-cells" min="16" placeholder="16 (by default)">
+        <button class="submit-btn" type="button">Enter</button>
+      </div>
+      <div class="board">
+      </div>
+      <div class="buttons">
+        <button class="black" type="button" value="black">Black</button>
+        <button class="chosen-color" type="button">Choose color</button>
+        <button class="random-color" type="button" >Random Color</button>
+        <button class="colorful" type="button" >Rainbow</button>
+        <button class="erase" type="button" >Eraser</button>
+        <button class="reset" type="button">Reset</button>
+      </div>
     </div>
   </body>
 </html>
