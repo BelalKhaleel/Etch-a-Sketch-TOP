@@ -28,15 +28,18 @@ populateBoard()
 // Add hover effect to change color of divs on board
 // function colorCells() {
 //   debugger
-  let cells = document.querySelectorAll('.cell');
-  cells.forEach(cell => {
-    cell.addEventListener('mouseover', () => {
-      cell.style.backgroundColor = 'black';
-    });
-  });
+  // let cells = document.querySelectorAll('.cell');
+  // cells.forEach(cell => {
+  //   cell.addEventListener('mouseover', () => {
+  //     cell.style.backgroundColor = 'black';
+  //   });
+  // });
 // }
 
-// board.addEventListener("click", () => {
-// })
+board.addEventListener("mouseover", e => {
+  if(e.target.classList.contains('cell')) {
+    e.target.style.backgroundColor = 'black';
+  }
+})
 
 // Allow user to change colors
