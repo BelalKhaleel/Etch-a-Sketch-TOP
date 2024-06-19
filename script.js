@@ -35,11 +35,22 @@ populateBoard()
   //   });
   // });
 // }
+let coloring = false;
 
-board.addEventListener("mouseover", e => {
-  if(e.target.classList.contains('cell')) {
-    e.target.style.backgroundColor = 'black';
+board.addEventListener("click", e => {
+  if (!coloring) {
+    coloring = true;
+  } else {
+    coloring = false;
   }
+  console.log(coloring);
 })
 
+board.addEventListener("mouseover", e => {
+    if(coloring) {
+      if(e.target.classList.contains('cell')) {
+        e.target.style.backgroundColor = 'black';
+      }
+    }
+})
 // Allow user to change colors
