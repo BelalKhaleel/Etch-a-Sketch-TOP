@@ -25,15 +25,32 @@ function populateBoard (squaresPerSide = 16) {
 
 populateBoard()
 
+// Allow user to change colors
+let color = 'black';
+function chooseColor() {
+  const chosenColor = document.querySelector('.chosen-color');
+  const buttonContainer = document.querySelector('.buttons');
+  
+  buttonContainer.addEventListener('click', e => {
+    let buttonClass = e.target.classList;
+
+    if (buttonClass.contains('black')) {
+      color = 'black';
+    } else if (buttonClass.contains('chosen-color')) {
+      color = chosenColor.value;
+    } else if (buttonClass.contains('random-colors')) {
+      color = '#' + Math.floor(Math.random()*16777215).toString(16);
+    } else if (buttonClass.contains('eraser')) {
+      color = 'white';
+    }
+    console.log(color)
+  })
+}
+
+chooseColor()
+
 // Add hover effect to change color of divs on board
 // function colorCells() {
-//   debugger
-  // let cells = document.querySelectorAll('.cell');
-  // cells.forEach(cell => {
-  //   cell.addEventListener('mouseover', () => {
-  //     cell.style.backgroundColor = 'black';
-  //   });
-  // });
 // }
 let coloring = false;
 
@@ -46,11 +63,22 @@ board.addEventListener("click", e => {
   console.log(coloring);
 })
 
+
 board.addEventListener("mouseover", e => {
-    if(coloring) {
+  if(coloring) {
       if(e.target.classList.contains('cell')) {
-        e.target.style.backgroundColor = 'black';
+        console.log(color)
+        e.target.style.backgroundColor = color;
       }
     }
 })
-// Allow user to change colors
+
+//Reset board
+const reset = document.querySelector('.reset');
+
+reset.addEventListener('click', () => {
+  let divs = document.querySelectorAll('div');
+  divs.forEach(div => {
+    div.style.backgroundColor = 'white';
+  });
+})

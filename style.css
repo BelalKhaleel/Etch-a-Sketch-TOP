@@ -55,3 +55,11 @@ button {
   background-color: white;
   color: black;
 }
+
+.buttons > label {
+  align-content: center;
+}
+
+.chosen-color {
+  cursor: pointer;
+}

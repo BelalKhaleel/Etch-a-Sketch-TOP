@@ -12,17 +12,17 @@
     <div class="wrapper">
       <div>
         <label for="nb-of-cells">Please choose number of cells per side of the board:</label>
-        <input type="number" id="nb-of-cells" min="16" placeholder="minimum 16">
+        <input type="number" id="nb-of-cells" min="16" max="100" placeholder="minimum 16">
         <!-- <button class="enter-btn" type="button">Enter</button> -->
       </div>
       <div class="board">
       </div>
       <div class="buttons">
         <button class="black" type="button" value="black">Black</button>
-        <button class="chosen-color" type="button">Choose color</button>
-        <button class="random-color" type="button" >Random Color</button>
-        <button class="colorful" type="button" >Rainbow</button>
-        <button class="erase" type="button" >Eraser</button>
+        <label for="chosen-color">Choose color =></label>
+        <input class="chosen-color" type="color" id="chosen-color">
+        <button class="random-colors" type="button" >Random Colors</button>
+        <button class="eraser" type="button" >Eraser</button>
         <button class="reset" type="button">Reset</button>
       </div>
     </div>
