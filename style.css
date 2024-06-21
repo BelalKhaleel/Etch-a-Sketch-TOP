@@ -15,7 +15,7 @@
 }
 
 input {
-  width: 120px;
+  width: 125px;
 }
 
 .board {
@@ -28,9 +28,7 @@ input {
 }
 
 .cell {
-  width: 6.25%;
-  height: 6.25%;
-  border: solid 1px lightgray;
+  border: dotted 1px lightgray;
 }
 
 button {
@@ -46,14 +44,13 @@ button {
   gap: 1em;
 }
 
-.black {
-  background-color: black;
-  color: white;
-}
+/* .black { */
+  /* background-color: black;
+  color: white; */
+/* } */
 
-.black:hover {
-  background-color: white;
-  color: black;
+button:hover {
+  opacity: .7;
 }
 
 .buttons > label {

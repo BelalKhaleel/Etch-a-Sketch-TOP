@@ -1,53 +1,97 @@
-const board = document.querySelector('.board');
+const BOARD_SIDE = 550;
+
+const board = document.querySelector(".board");
 
 // Get input from user related to number of cells per side of board (16 by default)
-const input = document.querySelector('input');
+let userInput = document.querySelector("#nb-of-cells");
 
-// const enterButton = document.querySelector('.enter-btn');
-// enterButton.addEventListener("click", () => {
+let cellsPerSide;
 
-// })
+let cells = document.querySelectorAll(".cell");
 
-let squaresPerSide = Number(input.value);
-
-// Find a way to calculate the sides of the each div to prevent overflow from parent container
+const enterButton = document.querySelector(".enter-btn");
+enterButton.addEventListener("click", () => {
+  if (!userInput) {
+    cellsPerSide = 16;
+  }
+  cellsPerSide = userInput.value;
+  if (cells) {
+    cells.forEach((cell) => {
+      board.removeChild(cell);
+    });
+  }
+  populateBoard();
+  cells = document.querySelectorAll(".cell")
+});
 
 // Populate board with cells
-function populateBoard (squaresPerSide = 16) {
-  let totalnbOfSquares = squaresPerSide*squaresPerSide;
-  for(let i = 1; i <= totalnbOfSquares; i++) {
-    const div = document.createElement("div");
-    div.classList.add("cell");
+function populateBoard() {
+  let totalNumOfcells = cellsPerSide * cellsPerSide;
+  for (let i = 1; i <= totalNumOfcells; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    const cellSideLength = BOARD_SIDE / cellsPerSide;
+    const cellSidePercentage = (cellSideLength * 100) / BOARD_SIDE;
+    cell.style.width = `${cellSidePercentage}%`;
+    cell.style.height = `${cellSidePercentage}%`;
 
-    board.appendChild(div);
+    board.appendChild(cell);
   }
 }
 
-populateBoard()
+const randomColors = document.querySelector('.random-colors');
 
-// Allow user to change colors
-let color = 'black';
-function chooseColor() {
-  const chosenColor = document.querySelector('.chosen-color');
-  const buttonContainer = document.querySelector('.buttons');
-  
-  buttonContainer.addEventListener('click', e => {
-    let buttonClass = e.target.classList;
+function handleClick(e) {
 
-    if (buttonClass.contains('black')) {
-      color = 'black';
-    } else if (buttonClass.contains('chosen-color')) {
-      color = chosenColor.value;
-    } else if (buttonClass.contains('random-colors')) {
-      color = '#' + Math.floor(Math.random()*16777215).toString(16);
-    } else if (buttonClass.contains('eraser')) {
+  e.stopPropagation();
+
+  function handleMouseOver() {
+    console.log(coloring)
+    if (!coloring) {
       color = 'white';
+    } else {
+      color = '#' + Math.floor(Math.random()*16777215).toString(16);
     }
-    console.log(color)
+  }
+  cells.forEach(cell => {
+    cell.addEventListener('mouseover', handleMouseOver)
+  });
+
+  buttonContainer.addEventListener('click', e => {
+    if (!(e.target.classList.contains('random-colors'))) {
+      cells.forEach(cell => {
+        cell.removeEventListener('mouseover', handleMouseOver);
+      })
+    }
   })
 }
 
-chooseColor()
+randomColors.addEventListener('click', handleClick)
+
+// Allow user to change colors
+let color = "black";
+
+const buttonContainer = document.querySelector(".buttons");
+function chooseColor() {
+  const chosenColor = document.querySelector(".chosen-color");
+
+  buttonContainer.addEventListener("click", (e) => {
+    
+    let buttonClass = e.target.classList;
+    // debugger
+    if (buttonClass.contains("black")) {
+      color = "black";
+    } else if (buttonClass.contains("chosen-color")) {
+      color = chosenColor.value;
+      console.log(color);
+      } else if (buttonClass.contains("eraser")) {
+        color = "white";
+      }
+    });
+}
+  console.log(color);
+
+chooseColor();
 
 // Add hover effect to change color of divs on board
 // function colorCells() {
@@ -55,30 +99,30 @@ chooseColor()
 let coloring = false;
 
 board.addEventListener("click", e => {
-  if (!coloring) {
-    coloring = true;
-  } else {
-    coloring = false;
+  if (e.target.classList.contains("cell")) {
+    if (!coloring) {
+      coloring = true;
+    } else {
+      coloring = false;
+    }
   }
   console.log(coloring);
-})
-
+});
 
 board.addEventListener("mouseover", e => {
-  if(coloring) {
-      if(e.target.classList.contains('cell')) {
-        console.log(color)
-        e.target.style.backgroundColor = color;
-      }
+  if (coloring) {
+    if (e.target.classList.contains("cell")) {
+      console.log(color);
+      e.target.style.backgroundColor = color;
     }
-})
+  }
+});
 
 //Reset board
-const reset = document.querySelector('.reset');
+const reset = document.querySelector(".reset");
 
-reset.addEventListener('click', () => {
-  let divs = document.querySelectorAll('div');
-  divs.forEach(div => {
-    div.style.backgroundColor = 'white';
+reset.addEventListener("click", () => {
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = "white";
   });
-})
+});
