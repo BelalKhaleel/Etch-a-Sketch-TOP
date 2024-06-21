@@ -41,9 +41,13 @@ function populateBoard() {
 
 }
 
-(function chooseColor() {
+function chooseColor(e) {
+  color = e.target.value;
+}
 
   const chosenColor = document.querySelector(".chosen-color");
+
+  chosenColor.addEventListener("change", chooseColor);
 
   buttonContainer.addEventListener("click", (e) => {
     let buttonClass = e.target.classList;
@@ -56,8 +60,6 @@ function populateBoard() {
       randomColors.style.backgroundColor = "";
 
     } else if (buttonClass.contains("chosen-color")) {
-      color = chosenColor.value;
-      console.log(color);
       blackButton.style.backgroundColor = "";
       blackButton.style.color = "";
       eraser.style.backgroundColor = "";
@@ -78,7 +80,6 @@ function populateBoard() {
     }
 
   });
-})();
 
 function handleClick(e) {
 
