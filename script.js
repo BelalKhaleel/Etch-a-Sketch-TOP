@@ -38,7 +38,7 @@ function populateBoard() {
 
     board.appendChild(cell);
   }
-  
+
 }
 
 (function chooseColor() {
@@ -116,15 +116,15 @@ randomColors.addEventListener("click", handleClick);
 
 enterButton.addEventListener("click", () => {
 
-  if (!userInput) {
+  if (!userInput.value) {
     cellsPerSide = 16;
+  } else {
+    cellsPerSide = userInput.value;
   }
-
-  cellsPerSide = userInput.value;
-  if (cells) {
-    cells.forEach((cell) => {
-      board.removeChild(cell);
-    });
+    if (cells) {
+      cells.forEach((cell) => {
+        board.removeChild(cell);
+      });
   }
 
   populateBoard();

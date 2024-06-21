@@ -6,7 +6,7 @@
 
 .wrapper {
   max-height: 100vh;
-  padding: 1em;
+  padding: 1.5em;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
